@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Juegos</title>
+    </h:head>
+    <h:body>
+        <h:form>            
+                    <!--Tabla con la lista de juegos -->
+                    <p:graphicText value="Lista de Juegos" fontName="Broadway" fontSize="26" style="margin-left: 60px" />
+                    <!-- Componenta dataTable id=table, se rellena con los datos de listaVideojuegos, atributo de la clase
+                    TableVideojuegoPojo -->
+                    <p:dataTable id="table" value="#{tableVideojuegoPojo.listaVideojuegos}" var="videojuegoPojo" paginator="true"
+                                 rows="5" dynamic="true" >
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Juego"/>
+                            </f:facet>
+                            <p:graphicImage value="#{dao.carpeta}#{videojuegoPojo.ruta}" />
+                            <p:graphicText value="#{videojuegoPojo.nombre} " fontName="Arial" fontSize="18" style="margin-bottom: 65px" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sinapsis"/>
+                            </f:facet>
+                            <h:outputText value="#{videojuegoPojo.sinapsis}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Precio"/>
+                            </f:facet>
+                            <h:outputText value="#{videojuegoPojo.precio}"/>
+                        </p:column>
+                    </p:dataTable>        
+                <!-- Inserción de nuevo juego -->                
+                    <p:graphicText value="Insertar Juego Nuevo" fontName="Broadway" fontSize="26" style="margin-bottom: 20px" />                    
+                        <h:panelGrid columns="2" >
+                            <p:graphicText value="Nombre" fontName="Arial" fontSize="18" style="margin-left: 10px" />
+                            <h:inputText id="inputNombre" value="#{nuevoJuegoBean.nombre}" required="true"/>                                                                                                                        
+                            <p:graphicText value="Sinapsis" fontName="Arial" fontSize="18" style="margin-left: 10px" />
+                            <h:inputTextarea id="inputSinapsis" value="#{nuevoJuegoBean.sinapsis}"/>                                                                                                                
+                            <p:graphicText value="Precio" fontName="Arial" fontSize="18" style="margin-left: 10px" />
+                            <h:inputText id="inputPrecio" value="#{nuevoJuegoBean.precio}"/>                            
+                            <p:graphicText value="Foto" fontName="Arial" fontSize="18" style="margin-left: 10px" />
+                            <p:fileUpload id="imagenUpload"
+                                          fileUploadListener="#{nuevoJuegoBean.accionFileUpload}"
+                                          allowTypes="*.jpg;*.png;*.gif" description="Imágenes"/>
+                            <h:outputLabel/>                                                                                    
+                        </h:panelGrid>                    
+                    <p:commandButton value="Guardar Juego" actionListener="#{nuevoJuegoBean.grabarJuego}" update="table" />
+                </h:form>                
+
+    </h:body>
+</html>
+
