@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>PiePagina</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form >
+                <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="400" height="60">
+                    <param name="movie" value="flash/banner.swf" />
+                    <param name="quality" value="best" />
+                    <param name="menu" value="true" />
+                    <param name="allowScriptAccess" value="sameDomain" />
+                    <embed src="flash/banner.swf" quality="best" menu="true" width="400" height="60" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" allowScriptAccess="sameDomain" />
+                </object>              
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+
