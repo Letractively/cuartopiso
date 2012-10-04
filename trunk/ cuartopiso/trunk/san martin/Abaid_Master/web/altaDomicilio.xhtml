@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>      
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Registro de Clientes - Abaid</title>
+    </h:head>
+
+    <h:body>
+        <h:panelGrid id ="pgDomicilio" columns="4" cellpadding ="4">                                
+            <h:outputLabel value="Calle:"/>
+            <p:inputText id="calle" value="#{usuarioControl.cliente.domicilio.calle}" title="Calle" />                  
+            <h:outputLabel value="Numero:"/>
+            <p:inputText id="numero" value="#{usuarioControl.cliente.domicilio.numero}" title="Numero" />
+            <h:outputLabel value="Piso.:"/>
+            <p:inputText id="piso" value="#{usuarioControl.cliente.domicilio.piso}" title="Piso" />
+            <h:outputLabel value="Dpto.:"/>                
+            <p:inputText id="dpto" value="#{usuarioControl.cliente.domicilio.dpto}" title="Departamento" />                
+            <h:outputLabel value="Localidad:"/>
+            <p:selectOneMenu id="localidad" value="#{domicilioManaged.localidad}" style="font-size: 12px" >
+                <f:selectItem value="Seleccione Localidad"/>
+                <f:selectItems value="#{domicilioManaged.listaLocalidades}" var="domic" itemLabel="#{domic.nombre}"/>
+                <f:ajax event="change" render="distrito"/>
+            </p:selectOneMenu>
+            <p:selectOneMenu id="distrito" value="#{domicilioManaged.distrito}" style="font-size: 12px" >
+                <f:selectItems value="#{domicilioManaged.listaDistritos}" var="domic" itemLabel="#{domic.nombre}"/>
+            </p:selectOneMenu>
+            <h:outputLabel value="Provincia:"/>
+            <p:inputText id="provincia" value="#{usuarioControl.cliente.sueldo}" title="Sueldo" />                                
+            <h:outputLabel value="Cod.Postal:"/>
+            <p:inputText id="codPostal" value="#{usuarioControl.cliente.telefono}" title="Telefono" />                        
+            <h:outputLabel value="Observaciones:"/>
+            <p:inputText id="observaciones" value="#{usuarioControl.cliente.estado}" title="Estado" />
+
+        </h:panelGrid>
+    </h:body>
+</html>
+
