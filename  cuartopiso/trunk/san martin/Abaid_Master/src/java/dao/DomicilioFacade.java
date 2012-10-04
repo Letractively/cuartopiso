@@ -1,0 +1,22 @@
+package dao;
+
+import entidades.Domicilio;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Stateless
+public class DomicilioFacade extends AbstractFacade<Domicilio> implements DomicilioFacadeLocal {
+
+    @PersistenceContext(unitName = "Abaid_MasterPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public DomicilioFacade() {
+        super(Domicilio.class);
+    }
+}
