@@ -19,17 +19,17 @@
                         <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
                             <ui:include src="/altaCliente.xhtml"/>                          
                             <h:outputText value="Ir al final: " />  
-                            <h:selectBooleanCheckbox value="#{altaCliente.skip}" />  
+                            <h:selectBooleanCheckbox value="" />  
                         </h:panelGrid>  
                     </p:panel>  
-                </p:tab> 
+                </p:tab>
                 <p:tab id="direccion" title="Direccion">  
                     <p:panel header="Direccion" style="background-color: tan">  
                         <h:messages errorClass="error"/>  
                         <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
                             <ui:include src="/altaDomicilio.xhtml"/>
                             <h:outputText value="Ir al final: " />  
-                            <h:selectBooleanCheckbox value="#{altaCliente.skip}" />  
+                            <h:selectBooleanCheckbox value="" />  
                         </h:panelGrid>  
                     </p:panel>  
                 </p:tab>                 

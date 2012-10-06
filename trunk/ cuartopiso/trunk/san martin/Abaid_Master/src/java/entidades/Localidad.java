@@ -89,7 +89,7 @@ public class Localidad implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Localidades[ idLocalidad=" + idLocalidad + " ]";
+        return "entidades.Localidad[ idLocalidad=" + idLocalidad + " ]";
     }
     
 }

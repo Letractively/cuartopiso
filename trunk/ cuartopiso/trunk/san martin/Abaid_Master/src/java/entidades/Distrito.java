@@ -90,7 +90,7 @@ public class Distrito implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Distritos[ idDistrito=" + idDistrito + " ]";
+        return "entidades.Distrito[ idDistrito=" + idDistrito + " ]";
     }
     
 }
