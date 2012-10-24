@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:form>
+        <p:panel style="width: auto; height:auto">
+            <p:commandButton id ="com2" value="Nuevo Cliente" onclick="nuevoClienteDialog.show()"/>
+            <p:dialog id="dialog2" header="NUEVO CLIENTE" widgetVar="nuevoClienteDialog"  
+                      showEffect="scale" hideEffect="puff" resizable="false" 
+                      style="font-size: 15px; width: auto" appendToBody="true" >
+                <ui:include src="/altaCliente.xhtml"/>
+            </p:dialog>            
+            <p:commandButton value="Eliminar Cliente" disabled="true" onclick="eliminarClienteDialog.show()"/>
+            <p:dialog id="dialog3" header="ATENCION!!!!" widgetVar="eliminarClienteDialog" 
+                      width="400" height="20" hideEffect="explode">
+            </p:dialog>
+
+            <p:commandButton value="Modificar CLiente" disabled="true" onclick="editarClienteDialog.show()"/>
+            <p:dialog id="dialog4" header="ATENCION!!!!" widgetVar="eliminarClienteDialog" 
+                      width="400" height="20" hideEffect="explode" >
+            </p:dialog>
+        </p:panel>
+    </h:form>
+</html>
+
