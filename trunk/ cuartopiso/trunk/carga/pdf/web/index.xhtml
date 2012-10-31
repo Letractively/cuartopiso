@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:inputText value="#{ejemploController.cadenaBusqueda}"/>
+                <h:commandButton value="Buscar" action="#{ejemploController.doBuscarCliente}" />
+                <h:commandLink value="Nuevo cliente" action="#{ejemploController.doNuevoCliente}" />
+            </h:panelGrid>
+            <h1><h:outputText value="Listado"/></h1>
+            
+            <f:view>
+                <h:form>
+                    <h1><h:outputText value="List"/></h1>
+                    <h:dataTable value="#{ejemploController.listaClientes}" var="item">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Idcliente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idcliente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nombre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Apellido"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Direccion"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </f:view>
+
+            
+        </h:form>
+    </h:body>
+</html>
+
