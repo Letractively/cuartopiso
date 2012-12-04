@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Abaid - Blanco Y Niños</title>
+    </h:head>
+    <h:body>  
+        <h:form id="principal">
+            <p:growl id="growl" showDetail="true"/>  
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="130" closable="true" collapsible="true" >
+                    <ui:insert ><ui:include src="/faceletes/cabecera.xhtml"/></ui:insert>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <h1 align="center" style="color: blue">Elija una opcion para trabajar</h1>
+                    <table border="10" cellspacing="40" cellpadding="10" align="center" bgcolor="whitesmoke" >
+                        <tbody>
+                            <tr>
+                                <td><p:graphicImage value="/imagenes/cliente.jpeg" height="250px" width="250px"/></td>
+                                <td><p:graphicImage value="/imagenes/credito.jpg" height="250px" width="250px"/></td>
+                                <td><p:graphicImage value="/imagenes/administrador.png" height="250px" width="250px"/></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><p:button value="CLIENTES" outcome="/welcomePrimefaces" style="background-color: whitesmoke; height: 50px; width: 150px; text-align: center"/></td>
+                                <td align="center"><p:button value="CREDITO" outcome="/solicitud" style="background-color: whitesmoke; height: 50px; width: 150px; text-align: center"/></td>
+                                <td align="center"><p:button value="ADMINISTRADOR" outcome="/planes" style="background-color: whitesmoke; height: 50px; width: 150px; text-align: center"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p:layoutUnit>
+            </p:layout>
+        </h:form>
+    </h:body>
+</html>

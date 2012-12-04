@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view contentType="text/html">
+        <h:head>
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Abaid - Blanco Y Niños</title>
+            <script type="text/javascript">
+                PrimeFaces.locales['es'] = {
+                    closeText: 'Cerrar',
+                    prevText: 'Anterior',
+                    nextText: 'Siguiente',
+                    monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+                    dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                    dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D','L','M','M','J','V','S'],
+                    weekHeader: 'Semana',
+                    firstDay: 0,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText : 'Todo el día'
+                };
+            </script>
+        </h:head>
+        <h:messages showDetail="true" showSummary="true"/>
+        <h:panelGrid id ="pgCliente" columns="4" cellpadding ="4">
+            <h:outputLabel value="Apellido:"/>
+            <p:inputText id="apellido" value="#{usuarioControl.cliente.apellido}" 
+                         title="Apellido" required="true" requiredMessage="Campo obligatorio"/>                    
+            <h:outputLabel value="Nombre:"/>
+            <p:inputText id="nombre" value="#{usuarioControl.cliente.nombre}" 
+                         title="Nombre" required="true" requiredMessage="Campo obligatorio"/>                           
+            <h:outputLabel value="Cuil/Cuit:"/>
+            <p:inputMask id="cuit" value="#{usuarioControl.cliente.cuilCuit}" 
+                         title="CUIL/CUIT" required="true" requiredMessage="Campo obligatorio" 
+                         mask="99-99999999-9"/>                             
+            <h:outputLabel value="Estado Civil:"/>
+            <p:selectOneMenu id="estadoCivil" value="#{usuarioControl.estadoCivil}" required="true"
+                             style="font-size: 12px" requiredMessage="Campo obligatorio">
+                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                <f:selectItems value="#{listasControl.estadoCivil}" var="ecivil" 
+                               itemLabel="#{ecivil.label}"/>
+            </p:selectOneMenu>
+            <h:outputLabel value="Telefono:"/>
+            <p:inputMask id="telefono" value="#{usuarioControl.cliente.telefono}" 
+                         mask="(9999)-9999999" title="Telefono"/>
+            <h:outputLabel value="Celular:"/>
+            <p:inputMask id="celular" value="#{usuarioControl.cliente.celular}" 
+                         mask="(9999)-99999999" title="Celular"/>
+            <h:outputLabel value="Email:"/>
+            <p:inputText id="email" value="#{usuarioControl.cliente.email}" 
+                         title="Email" />
+            <h:outputLabel value="Fecha Nac.:"/>
+            <p:calendar id="fechaNac" value="#{usuarioControl.fechaNacimiento}" navigator="true" 
+                        pattern="dd/MM/yyyy" effect="fold" mindate="1/1/1922" maxdate="31/12/1994"
+                        required="true" requiredMessage="Campo obligatorio" locale="es"/>
+            <h:outputLabel value="Profesion:"/>
+            <p:selectOneMenu id="profesion" value="#{usuarioControl.profesionSelec}" 
+                             style="font-size: 12px" required="true" requiredMessage="Campo obligatorio">
+                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                <f:selectItems value="#{listasControl.profesiones}"/>
+            </p:selectOneMenu>
+            <h:outputLabel value="Sueldo: $"/>
+            <p:inputText id="sueldo" value="#{usuarioControl.cliente.sueldo}" converter="#{BigDecimal}"
+                         required="true" requiredMessage="Campo obligatorio" title="Sueldo"/>                    
+            <h:outputText value="Calle:"/>
+            <p:inputText id="calle" value="#{usuarioControl.domicilio.calle}" 
+                         title="Calle" required="true" requiredMessage="Campo obligatorio"/>                   
+            <h:outputText value="Numero:"/>
+            <p:inputText id="numero" value="#{usuarioControl.domicilio.numero}" title="Numero"/>
+            <h:outputText value="Piso.:"/>
+            <p:inputText id="piso" value="#{usuarioControl.domicilio.piso}" title="Piso"/>
+            <h:outputText value="Dpto.:"/>                
+            <p:inputText id="dpto" value="#{usuarioControl.domicilio.dpto}" title="Departamento"/>                
+            <h:outputText value="Localidad:"/>
+            <p:selectOneMenu id="localidad" value="#{listasControl.localidadSelec}" style="font-size: 12px; 
+                             width: 100%" required="true" requiredMessage="Campo obligatorio">
+                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                <f:selectItems value="#{listasControl.localidades}"/>
+                <p:ajax update="listaDistrito" event="change"
+                        listener="#{listasControl.distritosPorLocalidad}" process="localidad"/>                                
+            </p:selectOneMenu>
+            <h:outputText value="Distrito:"/>
+            <p:selectOneMenu id="listaDistrito" value="#{usuarioControl.distritoSelec}"
+                             style="font-size: 12px; width: 100%">
+                <f:selectItems value="#{listasControl.distritos}"/>
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <p:panelGrid columns="2">
+            <p:commandButton id="botonSave" action="#{usuarioControl.crearCliente}"
+                             value="Guardar" onsuccess="nuevoClienteDialog.hide()" ajax="false"/>
+            <p:commandButton id="botonCancel" type="reset" value="Cancelar"/>
+        </p:panelGrid>
+    </f:view>
+</html>
