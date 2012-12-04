@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="planes">
+            <p:growl id="messages" showDetail="true"/>
+            <h1><center><h:outputText value="Lista de planes"/></center></h1>
+            <p:dataTable value="#{usuarioControl.planes}" id="planesLista" editable="true" var="item"
+                         tableStyle="width:auto; margin:auto; font-family:Arial; font-size: 12px">
+                <f:facet name="header">
+                    Planes
+                </f:facet>
+
+                <p:column headerText="Numero" style="width:100px">
+                    <h:outputText value="#{item.planId}"/>
+                </p:column>
+
+                <p:column headerText="Codigo" style="width:100px">
+                    <h:outputText value="#{item.codigo}"/>
+                </p:column>
+
+                <p:column headerText="Tipo Cuota" style="width:100px">
+                    <h:outputText value="#{item.tipoCuota}"/>
+                </p:column>
+
+                <p:column headerText="Cuotas" style="width:100px">
+                    <h:outputText value="#{item.cuotas}"/>
+                </p:column>
+
+                <p:column headerText="Cuota" style="width:100px">
+                    <h:outputText value="#{item.cuota}"/>
+                </p:column>
+
+                <p:column headerText="Tasa" style="width:100px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{item.tasa}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{item.tasa}" style="width:100px"/>
+                        </f:facet> 
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Gastos" style="width:100px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{item.gastos}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{item.gastos}}" style="width:100%"/>
+                        </f:facet> 
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Comision" style="width:100px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{item.comision}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{item.comision}" style="width:100%"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Plazo" style="width:100px">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{item.plazo}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{item.plazo}" style="width:100%"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Modificar" style="width:50px">
+                    <p:rowEditor/>
+                </p:column>
+            </p:dataTable>           
+        </h:form>
+    </h:body>
+</html>

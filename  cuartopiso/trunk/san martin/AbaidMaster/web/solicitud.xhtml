@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Nuevo Credito</title>
+    </h:head>
+    <h:body>
+        <h:form id="solicitud">
+            <p:growl id="messages" showDetail="true"/>
+            <h1 align="center" style="color: blue">Nuevo Credito</h1>
+            <p:panel id="panelCredit" style="width: 70%">
+                <h:panelGrid id="pGCliente" columns="4" cellpadding="4">
+                    <h:outputLabel value="Seleccione CUIL: "/>                    
+                    <p:selectOneMenu value="#{usuarioControl.cliente.cuilCuit}" id="cuiles">
+                        <f:selectItems value="#{usuarioControl.cuiles}"/>
+                        <p:ajax update="clienteSelec" event="change" listener="#{usuarioControl.buscarPorCuil}"
+                                process="cuiles"/>
+                    </p:selectOneMenu>
+                    <h:outputText value="Cliente :"/>
+                    <h:outputText id="clienteSelec" value="#{usuarioControl.clienteCredito}" style="font-weight: bold"/>
+                </h:panelGrid>
+                <h:panelGrid id="pgCredito" columns="6" cellpadding="4">
+                    <h:outputLabel value="Credito Nº"/>
+                    <h:inputText value="#{usuarioControl.nuevoCreditoId}"/>
+                    <h:outputLabel value="Fecha "/>
+                    <p:calendar pattern="dd/MM/yyyy" id="fechaCred"/>
+                    <h:outputLabel value="Tasa"/>
+                    <p:selectOneMenu id="tasas" value="#{usuarioControl.plan.tasa}">
+                        <f:selectItems value="#{usuarioControl.planes}" var="tasa" itemLabel="#{tasa.tasa}" 
+                                       itemValue="#{tasa.tasa}"/>
+                        <p:ajax update="" event="change" process="tasas"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid columns="4" cellpadding="4">
+                    <h:outputLabel value="Importe Préstamo: $"/>
+                    <h:inputText id="importe" value="#{usuarioControl.solicitud.importe}"/>
+                    <h:outputLabel value="Plan"/>
+                    <p:selectOneMenu id="planes" value="#{usuarioControl.plan.codigo}">
+                        <f:selectItems value="#{usuarioControl.planes}" var="plan" itemLabel="#{plan.codigo}" itemValue="#{plan.codigo}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+                <p:dataTable id="tablaCredito" value="#{usuarioControl.solicitud}" var="item">
+                    <p:column headerText="Cuota">
+                        <h:outputText value="#{item}"/>
+                    </p:column>
+                    <p:column headerText="Capital">
+                        <h:outputText value="#{item.idCliente}"/>
+                    </p:column>
+                    <p:column headerText="Interes">
+                        <h:outputText value="#{item.idCliente}"/>
+                    </p:column>
+                    <p:column headerText="Gastos">
+                        <h:outputText value="#{item.idCliente}"/>
+                    </p:column>
+                    <p:column headerText="Comision">
+                        <h:outputText value="#{item.idCliente}"/>
+                    </p:column>
+                    <p:column headerText="Impuesto">
+                        <h:outputText value="#{item.idCliente}"/>
+                    </p:column>
+                </p:dataTable>               
+            </p:panel>
+        </h:form>        
+    </h:body>
+</html>

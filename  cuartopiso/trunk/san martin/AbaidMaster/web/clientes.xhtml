@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:form id="form1">
+        <p:growl id="mensajes" showDetail="true"/>
+        <p:dataTable id="clientesTabla" value="#{usuarioControl.clientes}" var="item"                                   
+                     scrollRows="10" selectionMode="single" paginator="true" rows="10"
+                     tableStyle="width:auto; margin:auto; font-family:Arial; font-size: 12px"
+                     selection="#{usuarioControl.cliente}" rowKey="#{item.idCliente}"
+                     rendered="true" filteredValue="#{usuarioControl.filtroClientes}">
+            <p:ajax event="rowSelect" update=":form1:display" 
+                    oncomplete="actualClienteDialog.show()"/>  
+
+            <p:column headerText="Id">
+                <h:outputText value="#{item.idCliente}"/>
+            </p:column>
+            <p:column headerText="Apellido" filterBy="#{item.apellido}">                               
+                <h:outputText value="#{item.apellido}"/>
+            </p:column>
+
+            <p:column headerText="Nombre">
+                <h:outputText value="#{item.nombre}"/>
+            </p:column>
+
+            <p:column headerText="Cuit">
+                <h:outputText value="#{item.cuilCuit}"/>
+            </p:column>
+
+            <p:column headerText="Telefono">
+                <h:outputText value="#{item.telefono}"/>
+            </p:column>
+
+            <p:column headerText="Email">
+                <h:outputText value="#{item.email}"/>
+            </p:column> 
+            <p:column headerText="Eliminar">
+                <p:commandButton oncomplete="confirmaEliminaDialog.show()">
+                    <f:setPropertyActionListener value="#{item}" target="#{usuarioControl.cliente}"/>
+                </p:commandButton>
+            </p:column>
+        </p:dataTable>    
+        <p:dialog id="dialog1" header="Detalle Cliente" widgetVar="actualClienteDialog" resizable="true"  
+                  width="300" showEffect="scale" hideEffect="slide" style="background-color: tan; font-size: 15px">       
+            <h:panelGrid id="display" columns="2" cellpadding="2">                             
+                <h:outputText value="Apellido:"/>
+                <h:outputText value="#{usuarioControl.cliente.apellido}" style="font-weight: bold"/>
+                <h:outputText value="Nombre:"/>
+                <h:outputText value="#{usuarioControl.cliente.nombre}" style="font-weight: bold"/>                                
+            </h:panelGrid>  
+        </p:dialog> 
+        <p:confirmDialog id="confirmaElim" widgetVar="confirmaEliminaDialog" message="Desea eliminar el cliente?"
+                         appendToBody="true">
+            <p:commandButton value="Si" actionListener="#{usuarioControl.eliminarCliente}"                              
+                             onclick="confirmaEliminaDialog.hide()" process="@this"
+                             update="form1:clientesTabla mensajes"/>
+            <p:commandButton value="No" onclick="confirmaEliminaDialog.hide()"/>
+        </p:confirmDialog>
+    </h:form>
+</html>
