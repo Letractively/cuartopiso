@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>        
+        <title>Consulta Clientes - Abaid</title>
+    </h:head>
+    <h:body>
+        <div style="width:250px;height:100px;position:absolute;top:100px;left:300px;vertical-align:central">
+            <h:form id="regClientes" style="font-family: serif; font-size: 14px">
+                <p:growl id="messagesClientes" showSummary="true"/>
+                <p:growl id="growlClientes" globalOnly="true"></p:growl>
+                <p:panel header="Clientes" style="width: 820px">
+                    <h:outputLabel value="Ingrese DNI para comenzar  "/>                    
+                    <p:autoComplete id="dni" value="#{gestorCliente.dniSelec}" completeMethod="#{gestorCliente.consultarCuil}">  
+                        <p:ajax event="itemSelect"/>  
+                    </p:autoComplete>  
+                    <br/><br/>
+                    <h:panelGrid columns="6" cellspacing="1" cellpadding="3">                        
+                        <h:outputLabel value="Apellido"/>
+                        <p:inputText id="apellido" value="#{gestorCliente.cliente.apellido}" disabled="true"/>                        
+                        <h:outputLabel value="Nombre"/>
+                        <p:inputText id="nombre" value="#{gestorCliente.cliente.nombre}" disabled="true" />
+                        <h:outputLabel value="Telefonos"/> 
+                        <h:selectOneMenu id="tels" disabled="true">
+                            <f:selectItems/>
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Email"/>
+                        <p:inputText id="email" value="#{gestorCliente.cliente.email}" disabled="true" />
+                        <h:outputLabel value="Estado Civil"/>
+                        <p:inputText id="ecivil" value="#{gestorCliente.cliente.estadoCivil}" disabled="true" />
+                        <h:outputLabel value="Fecha alta"/>
+                        <p:inputText id="fechaAlta" value="#{gestorCliente.cliente.fechaNacimiento}" disabled="true" />
+                        <h:outputLabel value="Sueldo"/>
+                        <p:inputText id="sueldo" value="#{gestorCliente.cliente.sueldo}" disabled="true" />  
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>           
+        </div>
+    </h:body>
+</html>

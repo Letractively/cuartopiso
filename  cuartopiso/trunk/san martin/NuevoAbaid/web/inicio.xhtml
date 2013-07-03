@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Inicio</title>
+            </f:facet>
+        </h:head>
+
+        <body>
+        <h:form id="inicio">
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" closable="true">
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="50" closable="true">
+                    <div>
+                        <div style="float: left">Powered by <a href="http://code.google.com/p/cuartopiso" target="_blank">cuartopiso</a></div>
+                        <div style="float: right">Usuario: <h:link id="userActual" value="#{loginBean.usuario.username}" onclick ="logoutDialog.show();
+                                return false;"/></div>
+                    </div>
+                    <p:confirmDialog id="logout" widgetVar="logoutDialog"
+                                     appendToBody="true" message="Salir del sistema?">                     
+                        <p:commandButton id="si" value="SI" action ="#{loginBean.logout}" ajax="false"
+                                         oncomplete="logoutDialog.hide()"/>
+                    </p:confirmDialog>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175">
+                    <h:link style="color: white" value="Crear cuenta" outcome="/registrarUsuario"/><br/>
+                    <h:link style="color: white" value="Clientes" outcome="/consultaClientes"/>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="east" size="175">                    
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:form>
+    </body>
+
+</f:view>
+</html>
+
