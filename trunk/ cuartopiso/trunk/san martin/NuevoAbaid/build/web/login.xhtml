@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+        <div style="width:250px;height:100px;position:absolute;top:100px;left:500px;vertical-align:central">
+            <h:form id="login" style="font-family: serif; font-size: 14px" >
+                <p:growl id="messages" showSummary="true"/>
+                <p:growl id="growl" globalOnly="true"></p:growl>
+                <p:panel header="LOGIN" style="width: 300px">
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <h:outputLabel for="username" value="User"/><br/>
+                                <p:inputText id="username" required="true" value="#{loginBean.usuario.username}" label="username"
+                                             requiredMessage="Debe ingresar su nombre de usuario" style="width: 210px"/>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <h:outputLabel for="password" value="Password"/><br/>
+                                <p:password id="password" required="true" value="#{loginBean.usuario.password}" label="password"
+                                            requiredMessage="Debe ingresar su contraseña" style="width: 210px"/>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <br/>
+                                <p:commandButton id="loginButton" value="Autenticar" action="#{loginBean.validarUsuario}"
+                                                 update="messages message" style="width: 220px; background: orange; color: white" 
+                                                 ajax="false" type="submit"/>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>     
+                    <h:selectBooleanCheckbox id="recordar"/>Recordar usuario<br></br>
+                    <h:link style="color: firebrick" value="Crear cuenta" outcome="/registrarUsuario"/><br></br>
+                    <h:outputText value="#{loginBean.mensaje}" id="message"></h:outputText>                
+                </p:panel>
+            </h:form>
+        </div>
+    </h:body>    
+</html>

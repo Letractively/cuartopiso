@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>        
+        <title>Registro de Usuarios - Abaid</title>
+    </h:head>
+    <h:body>
+        <div style="width:250px;height:100px;position:absolute;top:100px;left:500px;vertical-align:central">
+            <h:form id="regUser" style="font-family: serif; font-size: 14px">
+                <p:growl id="messages" showSummary="true"/>
+                <p:growl id="growl" globalOnly="true"></p:growl>
+                <p:panel header="Alta usuario" style="width: 320px">
+                    <p:panelGrid columns="2"> 
+                        <h:outputLabel for="username" value="Nombre:" />  
+                        <p:inputText id="nombre" required="true" value="#{gestorUsuario.usuario.nombre}" title="nombre" 
+                                     requiredMessage="Debe ingresar un nombre"/>                                   
+                        <h:outputLabel for="username" value="Apellido:" />  
+                        <p:inputText id="apellido" required="true" value="#{gestorUsuario.usuario.apellido}" title="apellido" 
+                                     requiredMessage="Debe ingresar apellido"/>                                   
+                        <h:outputLabel for="username" value="Usuario:" />  
+                        <p:inputText id="username" required="true" value="#{gestorUsuario.usuario.username}" title="username" 
+                                     requiredMessage="Debe ingresar un nombre de usuario"/>                                   
+                        <h:outputLabel for="password" value="Password:" />  
+                        <p:password id="password" required="true" value="#{gestorUsuario.usuario.password}" title="password" 
+                                    requiredMessage="Debe ingresar una contraseña"/>                        
+                        <h:outputLabel value="Tipo:" for="tipo"/>
+                        <p:selectOneMenu id="tipo" value="#{gestorUsuario.usuario.rol}" style="font-size: 14px; font-family: serif"
+                                         requiredMessage="Debe ingresar el tipo de usuario"> 
+                            <f:selectItem itemValue="Usuario" itemLabel="user" />
+                            <f:selectItem itemValue="Administrador" itemLabel="admin"/>                            
+                        </p:selectOneMenu>
+                        <f:facet name="footer">  
+                            <p:commandButton id="cuentaButton" value="Guardar" action="#{gestorUsuario.registrarUsuario}"
+                                             update="messages grow1" ajax="false"/>
+                            <p:commandButton id="salir" value="Salir" action="login.xhtml" ajax="false"/>
+                        </f:facet>                      
+                    </p:panelGrid>                  
+                </p:panel>
+            </h:form>
+        </div>
+    </h:body>
+</html>
