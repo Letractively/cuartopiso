@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Inicio</title>
+            </f:facet>
+        </h:head>
+
+
+        <ui:composition template="/template.xhtml">
+            <ui:define name="title">
+                <h:outputText value="#{bundle.EditInteresTitle}"></h:outputText>
+            </ui:define>
+            <ui:define name="body">
+                <body>
+                    <h:form id="inicio">
+                        <p:layout fullPage="true">
+
+                            <p:layoutUnit position="north" size="100" closable="true">
+                                vfv
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="south" size="50" closable="true">
+                                fvf
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="west" size="175">
+                                vfv
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="center">
+                                <dir>
+                                    <p:panel menuTitle="Opciones del Administrador">
+                                        <p:panelGrid columns="4"  title="Opciones del Administrador">
+                                            <p:commandButton value="Planes"  oncomplete="pregunta1.show()" icon="ui-icon-document" />
+                                            <p:button value="Usuarios" outcome="/paginaAdministrador/usuario/listaUsuarios.xhtml" icon="ui-icon-search"  />
+                                            <p:button value="Textos" outcome="/textos/paginaTexto.xhtml"  icon="ui-icon-star"/> 
+                                            <p:button value="Empresa"  outcome="/empresa/empresaPagina.xhtml" icon="ui-icon-wrench"/>  
+                                        </p:panelGrid>
+                                    </p:panel>
+
+                                    <p:confirmDialog id="navegar" header="¡¡¡LA INFORMACION SE PERDERA SINO LA GUARDA!!!" widgetVar="pregunta1"  message="¿Desea ir a la pagina de planes?"
+                                                     appendToBody="true" style="text-align: center">
+                                        <p:button value="No" outcome="/paginaAdministrador/interes/listaInteres.xhtml"/>
+                                        <p:button value="Si" outcome="/paginaAdministrador/plan/listaPlanes.xhtml"/>
+                                        <p:button value="Cancelar" />
+                                    </p:confirmDialog>
+                                </dir>
+
+
+                                <dir>
+                                    <h:panelGroup id="messagePanel" layout="block">
+                                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                    </h:panelGroup>
+
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="#{bundle.EditInteresLabel_gastosAdmin}" for="gastosAdmin" />
+                                        <h:inputText id="gastosAdmin" value="#{interesController.selected.gastosAdmin}" title="#{bundle.EditInteresTitle_gastosAdmin}" />
+                                        <h:outputLabel value="#{bundle.EditInteresLabel_tasa}" for="tasa" />
+                                        <h:inputText id="tasa" value="#{interesController.selected.tasa}" title="#{bundle.EditInteresTitle_tasa}" />
+                                        <h:outputLabel value="#{bundle.EditInteresLabel_sellado}" for="sellado" />
+                                        <h:inputText id="sellado" value="#{interesController.selected.sellado}" title="#{bundle.EditInteresTitle_sellado}" />
+                                        <h:outputLabel value="#{bundle.EditInteresLabel_recargoXRefinanciacion}" for="recargoXRefinanciacion" />
+                                        <h:inputText id="recargoXRefinanciacion" value="#{interesController.selected.recargoXRefinanciacion}" title="#{bundle.EditInteresTitle_recargoXRefinanciacion}" />
+                                        <h:outputLabel value="#{bundle.EditInteresLabel_intXMora}" for="intXMora" />
+                                        <h:inputText id="intXMora" value="#{interesController.selected.intXMora}" title="#{bundle.EditInteresTitle_intXMora}" />
+                                    </h:panelGrid>
+
+                                    <br/>
+
+                                    <p:panel>
+                                        <h:panelGrid columns="4">
+                                            <h:commandButton action="#{interesController.update}" value="#{bundle.EditInteresSaveLink}"/>
+                                            <h:button outcome="/paginaAdministrador/interes/verInteres.xhtml" value="#{bundle.EditInteresViewLink}"/>
+                                            <h:commandButton action="#{interesController.prepareList}" value="#{bundle.EditInteresShowAllLink}" immediate="true"/>
+                                            <h:button outcome="/administrador.xhtml" value="#{bundle.EditInteresIndexLink}" />
+                                        </h:panelGrid>
+                                    </p:panel>
+                                </dir>
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="east" size="175">    
+                                vfv
+                            </p:layoutUnit>
+
+                        </p:layout>
+                    </h:form>
+                </body>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>
+
+
+

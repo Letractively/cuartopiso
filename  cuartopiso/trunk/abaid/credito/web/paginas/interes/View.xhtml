@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewInteresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewInteresLabel_idInteres}"/>
+                    <h:outputText value="#{interesController.selected.idInteres}" title="#{bundle.ViewInteresTitle_idInteres}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_gastosAdmin}"/>
+                    <h:outputText value="#{interesController.selected.gastosAdmin}" title="#{bundle.ViewInteresTitle_gastosAdmin}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_tasa}"/>
+                    <h:outputText value="#{interesController.selected.tasa}" title="#{bundle.ViewInteresTitle_tasa}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_sellado}"/>
+                    <h:outputText value="#{interesController.selected.sellado}" title="#{bundle.ViewInteresTitle_sellado}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_recargoXRefinanciacion}"/>
+                    <h:outputText value="#{interesController.selected.recargoXRefinanciacion}" title="#{bundle.ViewInteresTitle_recargoXRefinanciacion}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_intXMora}"/>
+                    <h:outputText value="#{interesController.selected.intXMora}" title="#{bundle.ViewInteresTitle_intXMora}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_estado}"/>
+                    <h:outputText value="#{interesController.selected.estado}" title="#{bundle.ViewInteresTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_fecha}"/>
+                    <h:outputText value="#{interesController.selected.fecha}" title="#{bundle.ViewInteresTitle_fecha}"/>
+                    <h:outputText value="#{bundle.ViewInteresLabel_observacion}"/>
+                    <h:outputText value="#{interesController.selected.observacion}" title="#{bundle.ViewInteresTitle_observacion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{interesController.destroyAndView}" value="#{bundle.ViewInteresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewInteresEditLink}"/>
+                <br />
+                <h:commandLink action="#{interesController.prepareCreate}" value="#{bundle.ViewInteresCreateLink}" />
+                <br />
+                <h:commandLink action="#{interesController.prepareList}" value="#{bundle.ViewInteresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewInteresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

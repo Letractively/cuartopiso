@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputText escape="false" value="#{bundle.ListCreditoEmpty}" rendered="#{creditoController.items.rowCount == 0}"/>
+            <h:panelGroup rendered="#{creditoController.items.rowCount > 0}">
+                <h:outputText value="#{creditoController.pagination.pageFirstItem + 1}..#{creditoController.pagination.pageLastItem + 1}/#{creditoController.pagination.itemsCount}"/>&nbsp;
+                <h:commandLink action="#{creditoController.previous}" value="#{bundle.Previous} #{creditoController.pagination.pageSize}" rendered="#{creditoController.pagination.hasPreviousPage}"/>&nbsp;
+                <h:commandLink action="#{creditoController.next}" value="#{bundle.Next} #{creditoController.pagination.pageSize}" rendered="#{creditoController.pagination.hasNextPage}"/>&nbsp;
+                <p:dataTable value="#{creditoController.items}" var="item" style="border:solid 1px">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_idCredito}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idCredito}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_cuota}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cuota}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_monto}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.monto}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_fecha}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.fecha}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_tipo}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipo}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_comprobante}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.comprobante}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCreditoTitle_idSolicitud}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSolicitud}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="&nbsp;"/>
+                        </f:facet>
+
+                        <h:commandLink action="#{creditoController.cobrar}" value="cobrar"/>
+                    </p:column>
+                </p:dataTable>
+            </h:panelGroup>
+        </h:form>
+    </h:body>
+</html>
+

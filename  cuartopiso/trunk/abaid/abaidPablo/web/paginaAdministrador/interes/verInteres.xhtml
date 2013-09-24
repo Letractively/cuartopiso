@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="#{bundle.ViewInteresLabel_idInteres}"/>
+                                        <h:outputText value="#{interesController.selected.idInteres}" title="#{bundle.ViewInteresTitle_idInteres}"/>
+                                        <h:outputText value="#{bundle.ViewInteresLabel_gastosAdmin}"/>
+                                        <h:outputText value="#{interesController.selected.gastosAdmin}" title="#{bundle.ViewInteresTitle_gastosAdmin}"/>
+                                        <h:outputText value="#{bundle.ViewInteresLabel_tasa}"/>
+                                        <h:outputText value="#{interesController.selected.tasa}" title="#{bundle.ViewInteresTitle_tasa}"/>
+                                        <h:outputText value="#{bundle.ViewInteresLabel_sellado}"/>
+                                        <h:outputText value="#{interesController.selected.sellado}" title="#{bundle.ViewInteresTitle_sellado}"/>
+                                        <h:outputText value="#{bundle.ViewInteresLabel_recargoXRefinanciacion}"/>
+                                        <h:outputText value="#{interesController.selected.recargoXRefinanciacion}" title="#{bundle.ViewInteresTitle_recargoXRefinanciacion}"/>
+                                        <h:outputText value="#{bundle.ViewInteresLabel_intXMora}"/>
+                                        <h:outputText value="#{interesController.selected.intXMora}" title="#{bundle.ViewInteresTitle_intXMora}"/>
+                                    </h:panelGrid>
+
+                                   
+                                </dir>
+                            </p:layoutUnit>
+
+                            
+
+                        </p:layout>
+                    </h:form>
+                </body>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>
