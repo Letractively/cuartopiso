@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Inicio</title>
+            </f:facet>
+        </h:head>
+
+        <ui:composition template="/template.xhtml">
+            <ui:define name="title">
+                <h:outputText value="#{bundle.ListPlanTitle}"></h:outputText>
+            </ui:define>
+            <ui:define name="body">
+                <body>
+                    <h:form id="inicio" styleClass="jsfcrud_list_form">
+                        <p:layout fullPage="true">
+
+                            <p:layoutUnit position="north" size="100" closable="true">
+
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="south" size="50" closable="true">
+                                planes
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="west" size="175">
+
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="center">
+                                <dir>
+                                    <p:panel menuTitle="Opciones del Administrador">
+                                        <p:panelGrid columns="4"  title="Opciones del Administrador">
+                                            <p:commandButton value="Planes"  oncomplete="pregunta1.show()" icon="ui-icon-document" />
+                                            <p:button value="Usuarios" outcome="/paginaAdministrador/usuario/listaUsuarios.xhtml" icon="ui-icon-search"  />
+                                            <p:button value="Textos" outcome="/textos/paginaTexto.xhtml"  icon="ui-icon-star"/> 
+                                            <p:button value="Empresa"  outcome="/empresa/empresaPagina.xhtml" icon="ui-icon-wrench"/>  
+                                        </p:panelGrid>
+                                    </p:panel>
+
+                                    <p:confirmDialog id="navegar" header="¡¡¡LA INFORMACION SE PERDERA SINO LA GUARDA!!!" widgetVar="pregunta1"  message="¿La informacion se perdera, desea continuar?"
+                                                     appendToBody="true" style="text-align: center">
+                                        <p:button value="Si" outcome="/paginaAdministrador/interes/listaInteres.xhtml"/>
+                                        <p:button value="No" outcome="/paginaAdministrador/plan/listaPlanes.xhtml"/>
+                                        <p:button value="Cancelar" />
+                                    </p:confirmDialog>
+                                </dir>
+                                <dir>
+                                    <h:panelGroup id="messagePanel" layout="block">
+                                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                    </h:panelGroup>
+
+                                    <h:panelGrid columns="2">
+
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_canCuotas}" for="canCuotas" />
+                                        <h:inputText id="canCuotas" value="#{planController.selected.canCuotas}" title="#{bundle.EditPlanTitle_canCuotas}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_codigo}" for="codigo" />
+                                        <h:inputText id="codigo" value="#{planController.selected.codigo}" title="#{bundle.EditPlanTitle_codigo}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_diasDeGacias}" for="diasDeGacias" />
+                                        <h:inputText id="diasDeGacias" value="#{planController.selected.diasDeGacias}" title="#{bundle.EditPlanTitle_diasDeGacias}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_vencimiento}" for="vencimiento" />
+                                        <h:inputText id="vencimiento" value="#{planController.selected.vencimiento}" title="#{bundle.EditPlanTitle_vencimiento}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_descripcion}" for="descripcion" />
+                                        <h:inputText id="descripcion" value="#{planController.selected.descripcion}" title="#{bundle.EditPlanTitle_descripcion}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_estado}" for="estado" />
+                                        <h:inputText id="estado" value="#{planController.selected.estado}" title="#{bundle.EditPlanTitle_estado}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_limiteCapital}" for="limiteCapital" />
+                                        <h:inputText id="limiteCapital" value="#{planController.selected.limiteCapital}" title="#{bundle.EditPlanTitle_limiteCapital}" />
+                                        <h:outputLabel value="#{bundle.EditPlanLabel_idInteres}" for="idInteres" />
+                                        <h:selectOneMenu id="idInteres" value="#{planController.selected.idInteres}" title="#{bundle.EditPlanTitle_idInteres}" required="true" requiredMessage="#{bundle.EditPlanRequiredMessage_idInteres}">
+                                            <f:selectItems value="#{interesController.itemsAvailableSelectOne}"/>
+                                        </h:selectOneMenu>
+                                    </h:panelGrid>
+
+                                    <br />
+
+                                    <p:panel>
+                                        <h:panelGrid columns="4">
+                                            <h:commandButton action="#{planController.update}" value="#{bundle.EditPlanSaveLink}"/>
+                                            <h:button outcome="/paginaAdministrador/plan/verDatosPlan.xhtml" value="#{bundle.EditPlanViewLink}"/>
+                                            <h:commandButton action="#{planController.prepareList}" value="#{bundle.EditPlanShowAllLink}" immediate="true"/>
+                                            <h:button outcome="/administrador.xhtml" value="#{bundle.EditPlanIndexLink}" />
+                                        </h:panelGrid>
+                                    </p:panel>
+
+                                </dir>
+                            </p:layoutUnit>
+
+                            <p:layoutUnit position="east" size="175">    
+
+                            </p:layoutUnit>
+
+                        </p:layout>
+                    </h:form>
+                </body>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>

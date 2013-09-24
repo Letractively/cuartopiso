@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Inicio</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <h:form id="inicio">
+                <p:layout fullPage="true">
+
+                    <p:layoutUnit position="north" size="100" closable="true">
+                        vfv
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="south" size="50" closable="true">
+                        fvf
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="west" size="175">
+                        vfv
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center">
+                        <dir>
+                            <p:panel menuTitle="Opciones del Administrador">
+                                <p:panelGrid columns="4"  title="Opciones del Administrador">
+                                    <p:button value="Planes"  outcome="/paginaAdministrador/plan/listaPlanes.xhtml" icon="ui-icon-document" />
+                                    <p:button value="Usuarios" outcome="/paginaAdministrador/usuario/listaUsuarios.xhtml" icon="ui-icon-search"  />
+                                    <p:button value="Textos" outcome="/textos/paginaTexto.xhtml"  icon="ui-icon-star"/> 
+                                    <p:button value="Empresa"  outcome="/empresa/empresaPagina.xhtml" icon="ui-icon-wrench"/> 
+                                </p:panelGrid>
+                            </p:panel>
+
+                           
+                        </dir>
+
+
+                        <dir>
+                            imagen(logo)
+                        </dir>
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="east" size="175">    
+                        vfv
+                    </p:layoutUnit>
+
+                </p:layout>
+            </h:form>
+        </h:body>
+
+    </f:view>
+</html>
+
