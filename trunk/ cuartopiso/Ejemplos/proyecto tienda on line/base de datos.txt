@@ -9,7 +9,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `nameBD`
+-- Base de datos: `tienda`
 --
 
 -- --------------------------------------------------------
@@ -18,7 +18,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Estructura de tabla para la tabla `Carritos`
 --
 
-CREATE TABLE IF NOT EXISTS nameBD.`Carritos` (
+CREATE TABLE IF NOT EXISTS tienda.`Carritos` (
   `CodigoCarrito` varchar(36) collate utf8_spanish2_ci NOT NULL,
   `CodigoProducto` varchar(36) collate utf8_spanish2_ci NOT NULL,
   `Nombre` varchar(70) collate utf8_spanish2_ci NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS nameBD.`Carritos` (
 -- Estructura de tabla para la tabla `Comentarios`
 --
 
-CREATE TABLE IF NOT EXISTS nameBD.`Comentarios` (
+CREATE TABLE IF NOT EXISTS tienda.`Comentarios` (
   `CodigoComentario` varchar(36) collate utf8_spanish2_ci NOT NULL,
   `FechaHora` datetime NOT NULL,
   `CodigoProducto` varchar(36) collate utf8_spanish2_ci NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS nameBD.`Comentarios` (
 -- Estructura de tabla para la tabla `HistorialCarritos`
 --
 
-CREATE TABLE IF NOT EXISTS nameBD.`HistorialCarritos` (
+CREATE TABLE IF NOT EXISTS tienda.`HistorialCarritos` (
   `Email` varchar(60) collate utf8_spanish2_ci NOT NULL,
   `CodigoCarrito` varchar(36) collate utf8_spanish2_ci NOT NULL,
   `FechaHora` datetime NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS nameBD.`HistorialCarritos` (
 -- Estructura de tabla para la tabla `Log`
 --
 
-CREATE TABLE IF NOT EXISTS nameBD.`Log` (
+CREATE TABLE IF NOT EXISTS tienda.`Log` (
   `FechaHora` datetime NOT NULL,
   `Url` varchar(255) collate utf8_spanish2_ci NOT NULL,
   `RemoteIP` varchar(32) collate utf8_spanish2_ci NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS nameBD.`Log` (
 -- Estructura de tabla para la tabla `Productos`
 --
 
-CREATE TABLE IF NOT EXISTS nameBD.`Productos` (
+CREATE TABLE IF NOT EXISTS tienda.`Productos` (
   `Codigo` varchar(36) collate utf8_spanish2_ci NOT NULL,
   `Nombre` varchar(70) collate utf8_spanish2_ci NOT NULL,
   `Precio` double NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS nameBD.`Productos` (
 -- Estructura de tabla para la tabla `Usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS nameBD.`Usuarios` (
+CREATE TABLE IF NOT EXISTS tienda.`Usuarios` (
   `Email` varchar(60) collate utf8_spanish2_ci NOT NULL,
   `Nombre` varchar(100) collate utf8_spanish2_ci NOT NULL,
   `Direccion` varchar(200) collate utf8_spanish2_ci NOT NULL,
