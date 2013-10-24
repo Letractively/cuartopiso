@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <f:view contentType="text/html">
+                <h:head>
+                    <f:facet name="first">
+                        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                        <title>PrimeFaces</title>
+                    </f:facet>
+                </h:head>
+
+
+
+                <p:layout fullPage="true">
+
+                    <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                        Header
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
+                        Usuario: <h:outputText value="#{usuarioController.current.apellido}" style="text-align: right"/>&nbsp;&nbsp;&nbsp;
+                        <p:commandButton value="Cerra Sesion" action="#{usuarioController.logout}" />
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="west" size="130" header="Opciones " collapsible="true" >
+
+                        <h:link outcome="/paginas/cliente/List" value="Clientes" style="color:  #00ffcc"/>
+                        <br />
+                        <h:link outcome="/paginas/credito/List" value="Creditos" style="color: #00ffcc"/>
+
+
+                    </p:layoutUnit>
+
+                    <p:layoutUnit position="center" id="layoutUnitCentro">
+                        <center>
+                            <h1 >INGRESE A LA OPCION QUE DESEA</h1>
+                            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+
+                            <table>
+                                <tr style="padding: 8px">
+
+                                    <td> <img src="resources/imagenes/credito.jpg" width="200" height="200" alt="credito"/> </td>
+                                    <td> <img src="resources/imagenes/cobrar.png" width="200" height="200" alt="cobrar"/> </td>
+                                    <td> <img src="resources/imagenes/administrador.jpg" width="200" height="200" alt="administrador"/></td>
+
+
+                                </tr>
+                                <tr>
+
+                                    <td><h3><p:button value="Otorgar un credito" outcome="/paginas/cliente/List.xhtml"/></h3></td>
+                                    <td><h3><p:button value="Cobrar un credito" outcome="/paginas/credito/cobro.xhtml"/></h3></td>
+                                    <td><h3><p:commandButton value="Administrador" action="#{usuarioController.validaAdm}"/></h3></td>
+                                </tr>
+
+                            </table>
+
+
+                        </center>
+                    </p:layoutUnit>
+
+                </p:layout>
+
+            </f:view>
+        </h:form>
+    </h:body>
+</html>
+

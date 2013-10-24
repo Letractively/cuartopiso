@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDomicilioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_idDomicilio}"/>
+                    <h:outputText value="#{domicilioController.selected.idDomicilio}" title="#{bundle.ViewDomicilioTitle_idDomicilio}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_calle}"/>
+                    <h:outputText value="#{domicilioController.selected.calle}" title="#{bundle.ViewDomicilioTitle_calle}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_numero}"/>
+                    <h:outputText value="#{domicilioController.selected.numero}" title="#{bundle.ViewDomicilioTitle_numero}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_barrio}"/>
+                    <h:outputText value="#{domicilioController.selected.barrio}" title="#{bundle.ViewDomicilioTitle_barrio}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_piso}"/>
+                    <h:outputText value="#{domicilioController.selected.piso}" title="#{bundle.ViewDomicilioTitle_piso}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_localidad}"/>
+                    <h:outputText value="#{domicilioController.selected.localidad}" title="#{bundle.ViewDomicilioTitle_localidad}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_codigoPostal}"/>
+                    <h:outputText value="#{domicilioController.selected.codigoPostal}" title="#{bundle.ViewDomicilioTitle_codigoPostal}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_dpto}"/>
+                    <h:outputText value="#{domicilioController.selected.dpto}" title="#{bundle.ViewDomicilioTitle_dpto}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_manzana}"/>
+                    <h:outputText value="#{domicilioController.selected.manzana}" title="#{bundle.ViewDomicilioTitle_manzana}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_casa}"/>
+                    <h:outputText value="#{domicilioController.selected.casa}" title="#{bundle.ViewDomicilioTitle_casa}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_provincia}"/>
+                    <h:outputText value="#{domicilioController.selected.provincia}" title="#{bundle.ViewDomicilioTitle_provincia}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_observacion}"/>
+                    <h:outputText value="#{domicilioController.selected.observacion}" title="#{bundle.ViewDomicilioTitle_observacion}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_idUsuario}"/>
+                    <h:outputText value="#{domicilioController.selected.idUsuario}" title="#{bundle.ViewDomicilioTitle_idUsuario}"/>
+                    <h:outputText value="#{bundle.ViewDomicilioLabel_idCliente}"/>
+                    <h:outputText value="#{domicilioController.selected.idCliente}" title="#{bundle.ViewDomicilioTitle_idCliente}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{domicilioController.destroyAndView}" value="#{bundle.ViewDomicilioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDomicilioEditLink}"/>
+                <br />
+                <h:commandLink action="#{domicilioController.prepareCreate}" value="#{bundle.ViewDomicilioCreateLink}" />
+                <br />
+                <h:commandLink action="#{domicilioController.prepareList}" value="#{bundle.ViewDomicilioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDomicilioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

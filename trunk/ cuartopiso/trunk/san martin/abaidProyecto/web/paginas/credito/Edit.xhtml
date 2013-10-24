@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCreditoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_idCredito}" for="idCredito" />
+                    <h:inputText id="idCredito" value="#{creditoController.selected.idCredito}" title="#{bundle.EditCreditoTitle_idCredito}" required="true" requiredMessage="#{bundle.EditCreditoRequiredMessage_idCredito}"/>
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_cuota}" for="cuota" />
+                    <h:inputText id="cuota" value="#{creditoController.selected.cuota}" title="#{bundle.EditCreditoTitle_cuota}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_montoTotal}" for="montoTotal" />
+                    <h:inputText id="montoTotal" value="#{creditoController.selected.montoTotal}" title="#{bundle.EditCreditoTitle_montoTotal}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_montoXcuota}" for="montoXcuota" />
+                    <h:inputText id="montoXcuota" value="#{creditoController.selected.montoXcuota}" title="#{bundle.EditCreditoTitle_montoXcuota}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_intXcuota}" for="intXcuota" />
+                    <h:inputText id="intXcuota" value="#{creditoController.selected.intXcuota}" title="#{bundle.EditCreditoTitle_intXcuota}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_fecha1}" for="fecha1" />
+                    <h:inputText id="fecha1" value="#{creditoController.selected.fecha1}" title="#{bundle.EditCreditoTitle_fecha1}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_fecha2}" for="fecha2" />
+                    <h:inputText id="fecha2" value="#{creditoController.selected.fecha2}" title="#{bundle.EditCreditoTitle_fecha2}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_fechaCobro}" for="fechaCobro" />
+                    <h:inputText id="fechaCobro" value="#{creditoController.selected.fechaCobro}" title="#{bundle.EditCreditoTitle_fechaCobro}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_montoPagado}" for="montoPagado" />
+                    <h:inputText id="montoPagado" value="#{creditoController.selected.montoPagado}" title="#{bundle.EditCreditoTitle_montoPagado}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_cancelado}" for="cancelado" />
+                    <h:inputText id="cancelado" value="#{creditoController.selected.cancelado}" title="#{bundle.EditCreditoTitle_cancelado}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_debe}" for="debe" />
+                    <h:inputText id="debe" value="#{creditoController.selected.debe}" title="#{bundle.EditCreditoTitle_debe}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_intXmora}" for="intXmora" />
+                    <h:inputText id="intXmora" value="#{creditoController.selected.intXmora}" title="#{bundle.EditCreditoTitle_intXmora}" />
+                    <h:outputLabel value="#{bundle.EditCreditoLabel_idCliente}" for="idCliente" />
+                    <h:selectOneMenu id="idCliente" value="#{creditoController.selected.idCliente}" title="#{bundle.EditCreditoTitle_idCliente}" required="true" requiredMessage="#{bundle.EditCreditoRequiredMessage_idCliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{creditoController.update}" value="#{bundle.EditCreditoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCreditoViewLink}"/>
+                <br />
+                <h:commandLink action="#{creditoController.prepareList}" value="#{bundle.EditCreditoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCreditoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
