@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <center>
+                <p:panel header="Necesita Loguearce para entrar al sistema" id="panelLoguin">
+                    <h:panelGrid columns="2">
+                        Usuario <p:inputText value="#{usuarioController.selected.usr}" id="usr" required="true" requiredMessage="Se requiere un nobre de usuario para ingresar al sistema"/>
+                        Pasword <p:password value="#{usuarioController.selected.psw}" id="psw" required="true" requiredMessage="Se requiere un Pasword para acceder al Sistema" />
+                        <p:commandButton value="Ingresar" action="#{usuarioController.validarUsuario}" update="messages message" style="width: 220px; background: orange; color: white" 
+                                         ajax="false"/>
+                        <p:button value="Registrar Usuario" outcome="/paginas/usuario/registrar.xhtml" style="width: 220px; background: orange; color: white"/>
+                    </h:panelGrid>
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />   
+                </p:panel>
+            </center>
+        </h:form>
+    </h:body>
+</html>
+

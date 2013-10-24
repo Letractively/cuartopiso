@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <f:view contentType="text/html">
+                <h:head>
+                    <f:facet name="first">
+                        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                        <title>PrimeFaces</title>
+                    </f:facet>
+                </h:head>
+                <h:form styleClass="jsfcrud_list_form">
+                    <p:layout fullPage="true">
+
+                        <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                            Header
+                        </p:layoutUnit>
+
+
+
+
+
+                        <p:layoutUnit position="center" id="layoutUnitCentro">
+                            <center>
+                                <h1>Datos del Empleador</h1>
+                                <h:panelGroup id="messagePanel" layout="block">
+                                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                </h:panelGroup>
+
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_usr}" for="usr" />
+                                    <h:inputText id="usr" value="#{usuarioController.selected.usr}" title="#{bundle.CreateUsuarioTitle_usr}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_nombre}" for="nombre" />
+                                    <h:inputText id="nombre" value="#{usuarioController.selected.nombre}" title="#{bundle.CreateUsuarioTitle_nombre}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_apellido}" for="apellido" />
+                                    <h:inputText id="apellido" value="#{usuarioController.selected.apellido}" title="#{bundle.CreateUsuarioTitle_apellido}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_dni}" for="dni" />
+                                    <h:inputText id="dni" value="#{usuarioController.selected.dni}" title="#{bundle.CreateUsuarioTitle_dni}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_mail}" for="mail" />
+                                    <h:inputText id="mail" value="#{usuarioController.selected.mail}" title="#{bundle.CreateUsuarioTitle_mail}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_telefono1}" for="telefono1" />
+                                    <h:inputText id="telefono1" value="#{usuarioController.selected.telefono1}" title="#{bundle.CreateUsuarioTitle_telefono1}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_telefono2}" for="telefono2" />
+                                    <h:inputText id="telefono2" value="#{usuarioController.selected.telefono2}" title="#{bundle.CreateUsuarioTitle_telefono2}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_psw}" for="psw" />
+                                    <p:password id="psw" value="#{usuarioController.selected.psw}" title="#{bundle.CreateUsuarioTitle_psw}" />
+                                    <h:outputText value="Confirme el paswoord" />
+                                    <p:password id="psw1" value="#{usuarioController.selected.pswConf}" title="#{bundle.CreateUsuarioTitle_psw}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_fechaNac}" for="fechaNac" />
+                                    <h:inputText id="fechaNac" value="#{usuarioController.selected.fechaNac}" title="#{bundle.CreateUsuarioTitle_fechaNac}" />
+                                    <h:outputLabel value="#{bundle.CreateUsuarioLabel_tipo}" for="tipo" />
+                                    <p:selectOneMenu id="tipo" value="#{usuarioController.selected.tipo}" style="font-size: 14px; font-family: serif"
+                                                     requiredMessage="Debe ingresar el tipo de usuario"> 
+                                        <f:selectItem itemValue="user" itemLabel="usuario" />
+                                        <f:selectItem itemValue="Super" itemLabel="administrador"/>                            
+                                    </p:selectOneMenu>
+                                </h:panelGrid>
+                                <br />
+                                <h:commandLink action="#{usuarioController.registrar}" value="#{bundle.CreateUsuarioSaveLink}" />
+                                &nbsp;
+                                <h:link value="Volver" outcome="/login.xhtml" />
+                            </center>
+                        </p:layoutUnit>
+
+                    </p:layout>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+
+
+
+
+
+</html>
+

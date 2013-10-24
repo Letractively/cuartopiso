@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+
+            <f:view contentType="text/html">
+                <h:head>
+                    <f:facet name="first">
+                        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                        <title>PrimeFaces</title>
+                    </f:facet>
+                </h:head>
+
+                <h:form styleClass="jsfcrud_list_form" id="credito">
+                    <p:layout fullPage="true">
+
+                        <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                            Header
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
+                            <p:commandButton value="Cerra Sesion" action="#{usuarioController.logout}" />
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="west" size="130" header="Opciones " collapsible="true" >
+
+                            <h:link outcome="/paginas/cliente/List" value="Clientes" style="color:  #00ffcc"/>
+                            <br />
+
+                            <h:link outcome="/paginas/credito/List" value="Creditos" style="color: #00ffcc"/>
+
+
+                        </p:layoutUnit>
+
+                        <p:layoutUnit position="center" id="layoutUnitCentro">
+
+                            <center>
+                                <h1>Crear un nuevo credito</h1>
+                                <h:panelGroup id="messagePanel" layout="block">
+                                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                                </h:panelGroup>
+                                <h2>Datos del cliente al que se le otorga el credito</h2>
+                                Apellido: <h:outputText value="#{clienteController.selected.apellido}" />
+                                <br/>
+                                Nombre: <h:outputText value="#{clienteController.selected.nombre}" />
+                                <br/>
+                                dni: <h:outputText value="#{clienteController.selected.dni}" />
+                                <br/>
+                                <h2>Datos del Credito otorgado a cliente</h2>
+                                <h:panelGrid columns="2">
+
+                                    <h:outputLabel value="Comprobante" for="comprobante" />
+                                    <h:inputText id="comprobante" value="#{creditoController.selected.comprobante}" title="#{bundle.CreateCreditoTitle_comprobante}" />
+                                    <h:outputLabel value="Capital" for="capital" />
+                                    <h:inputText id="capital" value="#{creditoController.selected.capital}" title="#{bundle.CreateCreditoTitle_capital}" />
+                                    <h:outputLabel value="fecha" for="fechaCredito" />
+                                    <h:inputText id="fechaCredito" value="#{creditoController.selected.fechaCredito}" title="#{bundle.CreateCreditoTitle_fecha1}" >
+                                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                                    </h:inputText>
+                                    Profesion:
+                                    <h:outputText value="#{clienteController.selected.idProfesion.nombre}"  />
+                                    
+                                  
+                                    <h:outputLabel value="Plan" for="idPlan" />
+                                    <h:selectOneMenu id="idPlan" value="#{clienteController.selected.idProfesion.planList}" title="#{bundle.CreateCreditoTitle_idPlan}" >
+                                        <p:ajax update=":credito:idPlan" />
+                                        <f:selectItems value="#{planController.itemsAvailableSelectOne}"/>
+                                        
+                                    </h:selectOneMenu>
+
+                                </h:panelGrid>
+                                <br />
+                                <h:commandLink action="#{creditoController.create}" value="#{bundle.CreateCreditoSaveLink}" />
+                                <br />
+                                <br />
+                                <h:commandLink action="#{creditoController.prepareList}" value="#{bundle.CreateCreditoShowAllLink}" immediate="true"/>
+                                <br />
+                                <br />
+
+                            </center>
+
+                        </p:layoutUnit>
+
+                    </p:layout>
+                </h:form>
+            </f:view>
+        </ui:define>
+    </ui:composition>
+
+
+</html>

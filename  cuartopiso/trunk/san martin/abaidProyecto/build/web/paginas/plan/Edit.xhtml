@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPlanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPlanLabel_idPlan}" for="idPlan" />
+                    <h:inputText id="idPlan" value="#{planController.selected.idPlan}" title="#{bundle.EditPlanTitle_idPlan}" required="true" requiredMessage="#{bundle.EditPlanRequiredMessage_idPlan}"/>
+                    <h:outputLabel value="#{bundle.EditPlanLabel_canCuotas}" for="canCuotas" />
+                    <h:inputText id="canCuotas" value="#{planController.selected.canCuotas}" title="#{bundle.EditPlanTitle_canCuotas}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{planController.selected.codigo}" title="#{bundle.EditPlanTitle_codigo}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_diasDeGacias}" for="diasDeGacias" />
+                    <h:inputText id="diasDeGacias" value="#{planController.selected.diasDeGacias}" title="#{bundle.EditPlanTitle_diasDeGacias}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_vencimiento}" for="vencimiento" />
+                    <h:inputText id="vencimiento" value="#{planController.selected.vencimiento}" title="#{bundle.EditPlanTitle_vencimiento}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{planController.selected.descripcion}" title="#{bundle.EditPlanTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{planController.selected.estado}" title="#{bundle.EditPlanTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_limiteCapital}" for="limiteCapital" />
+                    <h:inputText id="limiteCapital" value="#{planController.selected.limiteCapital}" title="#{bundle.EditPlanTitle_limiteCapital}" />
+                    <h:outputLabel value="#{bundle.EditPlanLabel_idInteres}" for="idInteres" />
+                    <h:selectOneMenu id="idInteres" value="#{planController.selected.idInteres}" title="#{bundle.EditPlanTitle_idInteres}" required="true" requiredMessage="#{bundle.EditPlanRequiredMessage_idInteres}">
+                        <f:selectItems value="#{interesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPlanLabel_idCredito}" for="idCredito" />
+                    <h:selectOneMenu id="idCredito" value="#{planController.selected.idCredito}" title="#{bundle.EditPlanTitle_idCredito}" >
+                        <f:selectItems value="#{creditoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{planController.update}" value="#{bundle.EditPlanSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPlanViewLink}"/>
+                <br />
+                <h:commandLink action="#{planController.prepareList}" value="#{bundle.EditPlanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPlanIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
